@@ -10,6 +10,7 @@ class HashMap
   end
 
   def include?(key)
+
   end
 
   def set(key, val)
@@ -45,6 +46,6 @@ class HashMap
   end
 
   def bucket(key)
-    # optional but useful; return the bucket corresponding to `key`
+    
   end
 end
