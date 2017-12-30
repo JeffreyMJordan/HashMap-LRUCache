@@ -1,3 +1,4 @@
+include Enumerable
 class Node
   attr_accessor :key, :val, :next, :prev
 
@@ -13,13 +14,17 @@ class Node
   end
 
   def remove
-    # optional but useful, connects previous node to next node
-    # and removes self from list.
+    @prev.next = @next
+    @next.prev = @prev
   end
 end
 
 class LinkedList
   def initialize
+    @head = Node.new
+    @tail = Node.new
+    @head.next = @tail
+    @tail.prev = @head
   end
 
   def [](i)
@@ -28,30 +33,76 @@ class LinkedList
   end
 
   def first
+    @head.next
   end
 
   def last
+    @tail.prev
   end
 
   def empty?
+    @head.next.to_s==@tail.to_s
   end
 
   def get(key)
+    curr = @head 
+    until curr == @tail || curr.key == key 
+      curr = curr.next
+    end 
+    if curr != @tail 
+      return curr.val
+    end 
   end
 
   def include?(key)
+    curr = @head 
+    until curr == @tail || curr.key == key 
+      curr = curr.next
+    end 
+    if curr != @tail 
+      return true
+    end
+    false
   end
 
   def append(key, val)
+    curr = @head 
+    until curr.next == @tail 
+      curr = curr.next
+    end 
+    curr.next = Node.new(key, val)
+    curr.next.prev = curr
+    curr.next.next = @tail 
+    @tail.prev = curr.next
   end
 
   def update(key, val)
+    curr = @head 
+    until curr == @tail || curr.key == key 
+      curr = curr.next
+    end 
+    if curr != @tail 
+      curr.val = val
+    end 
+    
   end
 
   def remove(key)
+    curr = @head 
+    until curr == @tail || curr.key == key 
+      curr = curr.next
+    end 
+    if curr != @tail 
+      curr.remove
+    end 
   end
 
   def each
+    curr = @head.next 
+    until curr==@tail 
+      yield curr
+      curr = curr.next
+    end 
   end
 
   # uncomment when you have `each` working and `Enumerable` included
