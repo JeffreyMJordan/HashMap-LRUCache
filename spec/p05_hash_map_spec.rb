@@ -1,5 +1,6 @@
 require 'rspec'
 require 'p05_hash_map'
+require 'byebug'
 
 describe HashMap do
   let(:hash) do
@@ -51,6 +52,7 @@ describe HashMap do
     end
 
     it "returns false if a key is not in the hash" do
+      
       expect(hash).to_not include(:fourth)
     end
   end
