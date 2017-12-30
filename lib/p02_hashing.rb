@@ -14,11 +14,7 @@ end
 
 class String
   def hash
-    res = 0 
-    self.chars.each_with_index do |char, idx| 
-      res += (char.ord.hash * idx.hash)
-    end 
-    res 
+    self.chars.map{|char| char.ord}.hash
   end
 end
 
