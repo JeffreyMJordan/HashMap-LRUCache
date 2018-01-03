@@ -1,4 +1,5 @@
 require_relative 'p02_hashing'
+require 'byebug'
 
 class HashSet
   attr_reader :count

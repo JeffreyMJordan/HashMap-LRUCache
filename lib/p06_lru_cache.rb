@@ -32,7 +32,6 @@ class LRUCache
       node = @store.append(key, value)
       @map[key] = node
       if count>@max
-        puts "here"
         self.eject!
       end
       node.val

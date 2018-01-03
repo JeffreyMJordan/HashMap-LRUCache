@@ -4,11 +4,11 @@ end
 
 class Array
   def hash
-    res = 0
+    res = ""
     self.dup.each_with_index do |item, idx| 
-      res += (item.hash * idx.hash)
+      res += (item.hash * idx.hash).abs.to_s
     end 
-    res 
+    res.to_i
   end
 end
 
@@ -22,10 +22,10 @@ class Hash
   # This returns 0 because rspec will break if it returns nil
   # Make sure to implement an actual Hash#hash method
   def hash
-    res = 0 
+    res = 0
     self.each do |k, v| 
-      res += (k.hash/v.hash)
+      res += (k.to_s.hash/v.hash)
     end 
-    res 
+    res
   end
 end

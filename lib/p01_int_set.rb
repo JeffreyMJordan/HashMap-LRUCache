@@ -1,5 +1,4 @@
 class MaxIntSet
-
   attr_accessor :max
 
   def initialize(max)

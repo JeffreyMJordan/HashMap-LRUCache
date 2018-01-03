@@ -1,6 +1,8 @@
-include Enumerable
+
 class Node
   attr_accessor :key, :val, :next, :prev
+
+  include Enumerable
 
   def initialize(key = nil, val = nil)
     @key = key
@@ -20,6 +22,9 @@ class Node
 end
 
 class LinkedList
+
+  include Enumerable
+
   def initialize
     @head = Node.new
     @tail = Node.new
@@ -101,6 +106,7 @@ class LinkedList
       yield curr
       curr = curr.next
     end 
+    self
   end
 
   # uncomment when you have `each` working and `Enumerable` included

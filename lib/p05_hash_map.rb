@@ -5,6 +5,8 @@ require 'byebug'
 class HashMap
   attr_reader :count
 
+  include Enumerable
+
   def initialize(num_buckets = 8)
     @store = Array.new(num_buckets) { LinkedList.new }
     @count = 0
@@ -44,8 +46,8 @@ class HashMap
     @store.each do |lis|       
       lis.each do |item| 
         yield(item.key, item.val)
-      end 
-    end 
+      end
+    end
   end
 
   # uncomment when you have Enumerable included
